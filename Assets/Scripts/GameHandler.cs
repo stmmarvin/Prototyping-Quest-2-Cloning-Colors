@@ -3,12 +3,14 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     [SerializeField] private BlockMovement[] allPlayerBlocks;
-
+    [SerializeField] private int requiredCoins = 5;
+    [SerializeField] private int collectedCoins = 0;
     void Start()
     {
         AllPlayerBlocksArrayUpdate();
@@ -89,6 +91,23 @@ public class GameHandler : MonoBehaviour
                     break;
                 }
             }
+        }
+    }
+
+    public void AddScore(int value)
+    {
+        collectedCoins += value;
+        CheckLevelCompletion();
+    }
+
+    // checkecd if the collect coins 
+    private void CheckLevelCompletion()
+    {
+        if (collectedCoins >= requiredCoins)
+        {
+            Debug.Log("Level Completed");
+
+            SceneManager.LoadScene("Win");
         }
     }
 }

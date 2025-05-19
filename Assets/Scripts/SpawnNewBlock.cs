@@ -12,6 +12,24 @@ public class SpawnNewBlock : MonoBehaviour
 
     public void SpawnBlock()
     {
-        Instantiate(blockPrefab, spawnPosition.position, Quaternion.identity);
+        GameObject newBlock = Instantiate(blockPrefab, spawnPosition.position, Quaternion.identity);
+
+        SpriteRenderer spriteRenderer = newBlock.GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null )
+        {
+            spriteRenderer.color = GetRandomColor();
+        }
+    }
+
+    private Color GetRandomColor()
+    {
+        return new Color(
+            Random.Range(0, 1f), // Red
+            Random.Range(0, 1f), // Green
+            Random.Range(0, 1f), // Blue
+            1f                    //Alpha
+        );
+
     }
 }
