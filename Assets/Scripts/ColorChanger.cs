@@ -8,13 +8,40 @@ using UnityEngine;
 public class ColorChanger : MonoBehaviour
 {
     private SpriteRenderer mySpriteRenderer;
+
+    public enum BlockColor
+    {
+        Red,
+        Yellow,
+        Blue
+    }
+
+    [SerializeField]
+    private BlockColor startColor = BlockColor.Red;
+
     void Awake()
     {
-        mySpriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component attached to this GameObject
+        mySpriteRenderer = GetComponent<SpriteRenderer>(); // Haal de SpriteRenderer op
     }
 
     private void Start()
     {
-           mySpriteRenderer.color = new Color(Random.value, Random.value, Random.value);   // changed in different colors
+        ChangeColor(startColor); // Verander de kleur bij het starten
+    }
+
+    public void ChangeColor(BlockColor color)
+    {
+        switch (color)
+        {
+            case BlockColor.Red:
+                mySpriteRenderer.color = Color.red;
+                break;
+            case BlockColor.Yellow:
+                mySpriteRenderer.color = Color.yellow;
+                break;
+            case BlockColor.Blue:
+                mySpriteRenderer.color = Color.blue;
+                break;
+        }
     }
 }

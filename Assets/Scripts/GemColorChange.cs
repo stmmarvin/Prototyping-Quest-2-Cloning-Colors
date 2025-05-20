@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class GemColorChange : MonoBehaviour
 {
-    [SerializeField] private Color gemcolor = Color.white;
-    
+    // Removed invalid field 'Spritecolor RandomColor'
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Block"))
         {
-            SpriteRenderer myspriterenderer = other.GetComponent<SpriteRenderer>();
-            if (myspriterenderer != null)
+            SpriteRenderer mySpriteRenderer = other.GetComponent<SpriteRenderer>();
+            if (mySpriteRenderer != null)
             {
-                myspriterenderer.color = gemcolor;
+                // Assign a random color to the block's SpriteRenderer
+                mySpriteRenderer.color = new Color(
+                    Random.Range(0f, 1f),
+                    Random.Range(0f, 1f),
+                    Random.Range(0f, 1f)
+                );
             }
         }
     }

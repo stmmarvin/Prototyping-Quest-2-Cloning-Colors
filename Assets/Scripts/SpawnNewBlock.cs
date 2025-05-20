@@ -16,7 +16,7 @@ public class SpawnNewBlock : MonoBehaviour
 
         SpriteRenderer spriteRenderer = newBlock.GetComponent<SpriteRenderer>();
 
-        if (spriteRenderer != null )
+        if (spriteRenderer != null)
         {
             spriteRenderer.color = GetRandomColor();
         }
@@ -25,11 +25,10 @@ public class SpawnNewBlock : MonoBehaviour
     private Color GetRandomColor()
     {
         return new Color(
-            Random.Range(0, 1f), // Red
-            Random.Range(0, 1f), // Green
-            Random.Range(0, 1f), // Blue
-            1f                    //Alpha
+            Random.Range(0f, 1f),  // Red
+            Random.Range(0f, 1f),  // Green
+            Random.Range(0f, 1f)   // Blue
         );
-
     }
 }
+
